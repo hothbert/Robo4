@@ -1,0 +1,44 @@
+#VRML_SIM R2023b utf8
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/objects/backgrounds/protos/TexturedBackground.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/floors/protos/Floor.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/factory/conveyors/protos/ConveyorBelt.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/robots/niryo/ned/protos/Ned.proto"
+
+WorldInfo {
+}
+Viewpoint {
+  orientation -0.22488192046349562 0.04027906475975233 0.9735531412258551 2.7159797166557365
+  position 7.373188114817438 -2.1666600824767572 3.289673978652021
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+}
+Floor {
+}
+ConveyorBelt {
+  translation -0.5 0 -0.47
+  size 6 0.5 0.6
+  speed 0.2
+}
+Ned {
+  hidden translation_1 0 0 0.1065
+  hidden rotation_1 0 0 1 0
+  hidden translation_2 0 0 0.065
+  hidden rotation_2 -2.7708066670763157e-07 -0.9999999999999232 2.7730122003240214e-07 1.5700000000000773
+  hidden translation_3 0.221 0.012 0
+  hidden rotation_3 0 0 1 5.048833592563111e-07
+  hidden translation_4 0.032 0.042 0
+  hidden rotation_4 -0.5775032352967526 -0.577503225409844 -0.5770442252228252 2.093474990120963
+  hidden translation_5 0 0 0.188
+  hidden rotation_5 -0.00039799874029007424 -0.9999998415969901 0.0003979987402882616 1.570795999999046
+  hidden translation_6 0.0197 0.00925 0
+  hidden rotation_6 3.1944352042248896e-09 1 3.1969779413758704e-09 1.57
+  hidden translation_8 0.01455 -0.024400000000000213 0.0096140000525119
+  hidden rotation_8 1 0 0 1.5708
+  hidden translation_9 0.01455 -0.024400000000000213 -0.011065999947474162
+  hidden rotation_9 1 0 0 1.5708
+  translation 2.13 -0.49 0
+}
