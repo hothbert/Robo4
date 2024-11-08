@@ -5,12 +5,14 @@ EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/project
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/floors/protos/Floor.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/factory/conveyors/protos/ConveyorBelt.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/robots/niryo/ned/protos/Ned.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/solids/protos/SolidBox.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/robots/franka_emika/panda/protos/Panda.proto"
 
 WorldInfo {
 }
 Viewpoint {
-  orientation -0.22488192046349562 0.04027906475975233 0.9735531412258551 2.7159797166557365
-  position 7.373188114817438 -2.1666600824767572 3.289673978652021
+  orientation -0.37632990104522335 0.4697806354147663 0.7985499108813368 1.5739619452298128
+  position 0.4285604397144674 -3.493356295897859 4.565554538490305
 }
 TexturedBackground {
 }
@@ -19,28 +21,57 @@ TexturedBackgroundLight {
 Floor {
 }
 ConveyorBelt {
-  hidden translation_1 0 0 0.44998431953667234
+  hidden translation_1 7.771561172376096e-16 1.0992886475784463e-18 0.44995292753868144
+  hidden rotation_1 -0.19442633224673742 0.980917122558822 4.8863648955977405e-08 5.651099157532747e-06
+  hidden linearVelocity_1 -5.686733326190354e-15 -1.0653720642765024e-18 -5.684341886080802e-17
+  hidden angularVelocity_1 -4.464181224048318e-16 3.1392092574623084e-06 -1.7241505644860554e-12
   translation -0.5 0 -0.47
   size 6 0.5 0.6
   speed 0.2
 }
 Ned {
-  hidden position_0_0 -9.557870859211448e-07
-  hidden rotation_1 0 0 -1 9.55999787589645e-07
-  hidden position_1_0 5.530475899538161e-07
-  hidden rotation_2 -2.765238854619602e-07 -0.9999999999999234 2.767439955946582e-07 1.5700000000000762
-  hidden position_2_0 5.043180987462223e-07
-  hidden rotation_3 0 0 1 5.040030039932671e-07
-  hidden position_3_0 5.779723389037405e-07
-  hidden rotation_4 -0.5775034512548584 -0.5775031174736985 -0.577044117114876 2.0934746664846022
-  hidden position_4_0 -2.3918573788250796e-09
-  hidden rotation_5 -0.00039799874102752796 -0.9999998415969895 0.0003979987410257165 1.570795999999048
-  hidden position_5_0 7.222930656695309e-09
-  hidden rotation_6 3.6114665101037476e-09 1 3.6143411998306237e-09 1.57
-  hidden position_7_0 5.230527203252706e-11
-  hidden position_7_1 -5.2312364596221077e-11
-  hidden translation_8 0.01455 -0.02440000000000021 0.00961400005230527
-  hidden translation_9 0.01455 -0.02440000000000021 -0.011065999947687635
+  hidden position_0_0 -1.9115741674013975e-06
+  hidden rotation_1 0 0 -1 1.9115349901706203e-06
+  hidden position_1_0 1.106095178182223e-06
+  hidden rotation_2 -5.530477700611309e-07 -0.9999999999996939 5.534879903258402e-07 1.5700000000003056
+  hidden position_2_0 1.0086361973749343e-06
+  hidden rotation_3 0 0 1 1.0084464738183504e-06
+  hidden position_3_0 1.1559446795679036e-06
+  hidden rotation_4 -0.5775036738051109 -0.5775030062427261 -0.5770440057068558 2.0934743329692678
+  hidden position_4_0 -4.783714757650159e-09
+  hidden rotation_5 -0.0003979975450998332 -0.9999998415979414 0.00039799754509620995 1.5707959999980958
+  hidden position_5_0 1.4445861888204484e-08
+  hidden rotation_6 7.2229333076145224e-09 1 7.228682687297048e-09 1.57
+  hidden position_7_0 1.0464757005332633e-10
+  hidden position_7_1 -1.0466175519535857e-10
+  hidden translation_8 0.01455 -0.02440000000000042 0.00961400010464757
+  hidden translation_9 0.01455 -0.02440000000000042 -0.011065999895338244
   translation 2.13 -0.49 0
   controller "ros"
+}
+Panda {
+  translation 0.14 -0.56 0.04
+  rotation 0 0 1 1.5708
+  endEffectorSlot [
+    DistanceSensor {
+    }
+    DEF GRIPPER PandaHand {
+    }
+  ]
+}
+SolidBox {
+  translation -1.83481 0.1 0.179558
+  size 0.1 0.1 0.1
+  appearance PBRAppearance {
+    baseColor 0 0 1
+    baseColorMap ImageTexture {
+      url [
+        "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/default/worlds/textures/tagged_wall.jpg"
+      ]
+    }
+    roughness 0.5
+    metalness 0
+  }
+  physics Physics {
+  }
 }
