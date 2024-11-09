@@ -1,0 +1,21 @@
+running egg_info
+writing ../build/robo4_project/robo4_project.egg-info/PKG-INFO
+writing dependency_links to ../build/robo4_project/robo4_project.egg-info/dependency_links.txt
+writing entry points to ../build/robo4_project/robo4_project.egg-info/entry_points.txt
+writing requirements to ../build/robo4_project/robo4_project.egg-info/requires.txt
+writing top-level names to ../build/robo4_project/robo4_project.egg-info/top_level.txt
+reading manifest file '../build/robo4_project/robo4_project.egg-info/SOURCES.txt'
+adding license file 'LICENSE'
+writing manifest file '../build/robo4_project/robo4_project.egg-info/SOURCES.txt'
+running build
+running build_py
+running install
+running install_lib
+running install_data
+copying launch/robo4_project_launch.py -> /home/thomas/UoA_Year4/CS4048/Robo4/install/robo4_project/share/robo4_project/launch
+running install_egg_info
+removing '/home/thomas/UoA_Year4/CS4048/Robo4/install/robo4_project/lib/python3.12/site-packages/robo4_project-0.0.0-py3.12.egg-info' (and everything under it)
+Copying ../build/robo4_project/robo4_project.egg-info to /home/thomas/UoA_Year4/CS4048/Robo4/install/robo4_project/lib/python3.12/site-packages/robo4_project-0.0.0-py3.12.egg-info
+running install_scripts
+Installing panda_driver script to /home/thomas/UoA_Year4/CS4048/Robo4/install/robo4_project/lib/robo4_project
+writing list of installed files to '/home/thomas/UoA_Year4/CS4048/Robo4/build/robo4_project/install.log'
