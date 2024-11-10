@@ -1,5 +1,5 @@
 c<?xml version="1.0" ?>
-<robot name="panda">
+<robot name="ned">
     <webots>
         <plugin type="robo4_project.panda_driver.PandaRobotDriver" />
     </webots>

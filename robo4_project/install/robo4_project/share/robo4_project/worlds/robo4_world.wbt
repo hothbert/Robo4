@@ -1,0 +1,56 @@
+#VRML_SIM R2023b utf8
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/objects/backgrounds/protos/TexturedBackground.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/floors/protos/Floor.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/factory/conveyors/protos/ConveyorBelt.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/robots/niryo/ned/protos/Ned.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/solids/protos/SolidBox.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/robots/franka_emika/panda/protos/Panda.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/robots/franka_emika/panda/protos/PandaHand.proto"
+
+WorldInfo {
+}
+Viewpoint {
+  orientation -0.31149457800329133 0.2249284476279754 0.9232433705812464 1.9655936520461612
+  position 3.569218361646189 -8.265415230560114 6.647213807651508
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+}
+Floor {
+}
+ConveyorBelt {
+  hidden linearVelocity_1 -5.686733326190354e-15 -1.0653720642765024e-18 -5.684341886080802e-17
+  hidden angularVelocity_1 -4.464181224048318e-16 3.1392092574623084e-06 -1.7241505644860554e-12
+  translation -0.5 0 -0.47
+  size 6 0.5 0.6
+  speed 0.2
+}
+Ned {
+  translation 2.13 -0.49 0
+  controller "<extern>"
+}
+Panda {
+  translation 1.38 -0.559997 0.04
+  rotation 0 0 1 1.5708
+  name "Panda"
+  controller "<extern>"
+}
+SolidBox {
+  translation -1.83481 0.1 0.179558
+  size 0.1 0.1 0.1
+  appearance PBRAppearance {
+    baseColor 0 0 1
+    baseColorMap ImageTexture {
+      url [
+        "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/default/worlds/textures/tagged_wall.jpg"
+      ]
+    }
+    roughness 0.5
+    metalness 0
+  }
+  physics Physics {
+  }
+}
