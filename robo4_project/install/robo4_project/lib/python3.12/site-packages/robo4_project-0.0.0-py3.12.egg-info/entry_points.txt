@@ -1,2 +1,0 @@
-[console_scripts]
-panda_driver = robo4_project.panda_driver:main
