@@ -10,8 +10,8 @@ EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/project
 WorldInfo {
 }
 Viewpoint {
-  orientation -0.31149457800329133 0.2249284476279754 0.9232433705812464 1.9655936520461612
-  position 3.569218361646189 -8.265415230560114 6.647213807651508
+  orientation 0.19387905615793255 0.19102342546633422 -0.9622478695774893 1.8659166293254035
+  position 1.9960162409280175 2.066781915757231 1.4838206414062398
 }
 TexturedBackground {
 }
@@ -20,8 +20,8 @@ TexturedBackgroundLight {
 Floor {
 }
 ConveyorBelt {
-  hidden linearVelocity_1 -5.686733326190354e-15 -1.0653720642765024e-18 -5.684341886080802e-17
-  hidden angularVelocity_1 -4.464181224048318e-16 3.1392092574623084e-06 -1.7241505644860554e-12
+  hidden translation_1 -1.5687667216712775e-05 -9.553358213322692e-08 0.4499684981187217
+  hidden rotation_1 -0.03537881111371328 0.9989538144630592 0.02897613317687958 4.425769455202776e-05
   translation -0.5 0 -0.47
   size 6 0.5 0.6
   speed 0.2
@@ -32,9 +32,18 @@ Panda {
   name "Panda"
   controller "<extern>"
   supervisor TRUE
+  endEffectorSlot [
+    DEF GRIPPER PandaHand {
+    }
+    Camera {
+    }
+    DistanceSensor {
+    }
+  ]
 }
 SolidBox {
-  translation -1.83481 0.1 0.179558
+  translation 2.450360787191248 0.10000351972201485 0.17944287325077418
+  rotation 0.00604410711083473 -0.9999755559656655 -0.003515144433904047 0.0007028691796745069
   size 0.1 0.1 0.1
   appearance PBRAppearance {
     baseColor 0 0 1
