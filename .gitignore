@@ -1,1 +1,4 @@
+#this should ignore files affected by colcon build so that we dont have loads of files changed every time we push
 log/
+build/
+install/
