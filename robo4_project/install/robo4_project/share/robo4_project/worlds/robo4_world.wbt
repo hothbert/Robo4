@@ -7,7 +7,6 @@ EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/project
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/robots/niryo/ned/protos/Ned.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/solids/protos/SolidBox.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/robots/franka_emika/panda/protos/Panda.proto"
-EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/robots/franka_emika/panda/protos/PandaHand.proto"
 
 WorldInfo {
 }
@@ -37,6 +36,7 @@ Panda {
   rotation 0 0 1 1.5708
   name "Panda"
   controller "<extern>"
+  supervisor TRUE
 }
 SolidBox {
   translation -1.83481 0.1 0.179558

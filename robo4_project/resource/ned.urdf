@@ -1,6 +1,0 @@
-c<?xml version="1.0" ?>
-<robot name="Ned">
-    <webots>
-        <plugin type="robo4_project.ned_driver.NedRobotDriver" />
-    </webots>
-</robot>

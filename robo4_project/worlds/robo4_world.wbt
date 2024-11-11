@@ -4,10 +4,8 @@ EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/project
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/floors/protos/Floor.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/factory/conveyors/protos/ConveyorBelt.proto"
-EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/robots/niryo/ned/protos/Ned.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/solids/protos/SolidBox.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/robots/franka_emika/panda/protos/Panda.proto"
-EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/robots/franka_emika/panda/protos/PandaHand.proto"
 
 WorldInfo {
 }
@@ -28,15 +26,12 @@ ConveyorBelt {
   size 6 0.5 0.6
   speed 0.2
 }
-Ned {
-  translation 2.13 -0.49 0
-  controller "<extern>"
-}
 Panda {
   translation 1.38 -0.559997 0.04
   rotation 0 0 1 1.5708
   name "Panda"
   controller "<extern>"
+  supervisor TRUE
 }
 SolidBox {
   translation -1.83481 0.1 0.179558

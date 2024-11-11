@@ -1,5 +1,11 @@
-c<?xml version="1.0" ?>
-<robot name="panda">
+<?xml version="1.0" ?>
+<robot name="Panda">
+    <link name="base_link">
+        <!-- Define link geometry and properties -->
+    </link>
+    <joint name="joint_1" type="revolute">
+        <!-- Define joint parameters -->
+    </joint>
     <webots>
         <plugin type="robo4_project.panda_driver.PandaRobotDriver" />
     </webots>

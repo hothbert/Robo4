@@ -9,19 +9,11 @@ from webots_ros2_driver.webots_controller import WebotsController
 
 def generate_launch_description():
     package_dir = get_package_share_directory('robo4_project')
-    #robot_description_path = pathlib.Path(os.path.join(package_dir, 'resource', 'ned.urdf')).read_text()
     robot_description_path = pathlib.Path(os.path.join(package_dir, 'resource', 'panda.urdf')).read_text()
 
     webots = WebotsLauncher(
         world = os.path.join(package_dir, 'worlds','robo4_world.wbt')
     )
-
-    #ned_driver = WebotsController(
-    #    robot_name='Ned',
-    #    parameters=[
-    #        {'robot_description': robot_description_path}
-    #    ]
-    #)
 
     panda_driver = WebotsController(
         robot_name='Panda',
@@ -33,7 +25,6 @@ def generate_launch_description():
     return LaunchDescription([
         webots,
         panda_driver,
-        #ned_driver,
         launch.actions.RegisterEventHandler(
             event_handler=launch.event_handlers.OnProcessExit(
                 target_action=webots,
