@@ -23,7 +23,8 @@ setup(
     entry_points={
         'console_scripts': [
             'panda_driver = robo4_project.panda_driver:main',
-            'panda_sensor = robo4_project.panda_sensor:main'
+            'panda_sensor = robo4_project.panda_sensor:main',
+            'panda_camera = robo4_project.panda_camera:main'
         ],
     },
 )

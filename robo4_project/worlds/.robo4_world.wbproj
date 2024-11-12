@@ -7,4 +7,4 @@ centralWidgetVisible: 1
 orthographicViewHeight: 1
 textFiles: 0 "../../../../../../usr/local/webots/projects/robots/niryo/ned/controllers/ned/ned.c"
 consoles: Console:All:All
-renderingDevicePerspectives: Panda:camera;1;1;0;0
+renderingDevicePerspectives: Panda:camera;0;1;0;0

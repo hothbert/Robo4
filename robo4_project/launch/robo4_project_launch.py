@@ -28,10 +28,16 @@ def generate_launch_description():
         executable='panda_sensor'
     )
 
+    panda_camera = Node(
+        package='robo4_project',
+        executable='panda_camera'
+    )
+
     return LaunchDescription([
         webots,
         panda_driver,
         panda_sensor,
+        panda_camera,
         launch.actions.RegisterEventHandler(
             event_handler=launch.event_handlers.OnProcessExit(
                 target_action=webots,
