@@ -4,6 +4,10 @@ class PandaRobotDriver:
     def init(self, webots_node, properties):
         self.__robot = webots_node.robot
 
+    def step(self):
+        pass
+    #control logic/sensor updates here
+
 def main():
     rclpy.init()
     driver = PandaRobotDriver()

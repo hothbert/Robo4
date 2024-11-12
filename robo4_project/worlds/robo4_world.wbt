@@ -38,11 +38,17 @@ Panda {
     Camera {
     }
     DistanceSensor {
+      translation 0 0.1 0.05
+      rotation 0 1 0 1.5708
+      name "panda_distance_sensor"
+      type "generic"
+      lookupTable [0 0 0, 1 0.5 0.1, 10 0.1 0.9]
+      aperature 0.5
     }
   ]
 }
 SolidBox {
-  translation 2.450360787191248 0.10000351972201485 0.17944287325077418
+  translation -3.4 0 0.18
   rotation 0.00604410711083473 -0.9999755559656655 -0.003515144433904047 0.0007028691796745069
   size 0.1 0.1 0.1
   appearance PBRAppearance {
