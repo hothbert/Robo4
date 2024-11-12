@@ -22,7 +22,8 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'panda_driver = robo4_project.panda_driver:main'
+            'panda_driver = robo4_project.panda_driver:main',
+            'panda_sensor = robo4_project.panda_sensor:main'
         ],
     },
 )

@@ -8,5 +8,11 @@
     </joint>
     <webots>
         <plugin type="robo4_project.panda_driver.PandaRobotDriver" />
+        <device reference="ds1" type = "DistanceSensor">
+            <ros>
+                <topicName>Panda/panda_distance_sensor</topicName>
+                <alwaysOn>true</alwaysOn>
+            </ros>
+        </device>
     </webots>
 </robot>

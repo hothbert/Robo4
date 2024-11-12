@@ -1,6 +1,7 @@
 import rclpy
+from webots_ros2_driver.webots_controller import WebotsController
 
-class PandaRobotDriver:
+class PandaRobotDriver(WebotsController):
     def init(self, webots_node, properties):
         self.__robot = webots_node.robot
 
@@ -15,10 +16,3 @@ def main():
     driver.destroy_node()
     rclpy.shutdown()
 
-    # WORLDS FILE
-    #  endEffectorSlot [
-    #DistanceSensor {
-    #}
-    #DEF GRIPPER PandaHand {
-    #}
-  #]
