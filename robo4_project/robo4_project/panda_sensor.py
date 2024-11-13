@@ -10,7 +10,7 @@ class PandaSensor(Node):
 
     def _distance_sensor_callback(self, msg):
         distance = msg.range
-        self.get_logger().info(f"Distance: {distance}")
+        #self.get_logger().info(f"Distance: {distance}")
     
 def main():
     rclpy.init()

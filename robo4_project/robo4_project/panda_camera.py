@@ -12,34 +12,26 @@ class PandaCamera(Node):
         self.bridge = CvBridge()
 
     def _camera_callback(self, msg):
-        #converts the information recieved from the sensor to rgb values
+        #converts the information recieved from the sensor to array of bgr values
         #uses OpenCV dependency to translate ros2 stuff because it doesnt direcctly give colour
         frame = self.bridge.imgmsg_to_cv2(msg, desired_encoding='bgr8')
         self._detect_colours(frame)
 
     def _detect_colours(self, frame):
-        # Convert to HSV color space
-        #hsv_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
-
-        # Define color ranges
         colours = {
-            'red': [255, 0, 0],
-            'green': [0, 255, 0],
-            'blue': [0, 0, 255]
+            (255, 0, 0): 'blue', #these are all the possible colours of our boxes
+            (0, 255, 0): 'green',
+            (0, 0, 255): 'red'
         }
 
-        detected_colours = []
-        for colour in colours:
-            #mask = cv2.inRange(hsv_frame, np.array(lower_bound), np.array(upper_bound))
-            #if cv2.countNonZero(mask) > 0:
-                #detected_colors.append(color_name)
-            if colour in frame:
-                detected_colours.append(colour)
-        
-        if detected_colours:
-            self.get_logger().info(f"Detected colors: {', '.join(detected_colours)}")
-        else:
-            self.get_logger().info("No specific colors detected")
+        detected = "No specific colors detected"
+        for f in frame: #frame is a 3d array and pixel is numpy array
+            for pixel in f:
+                pixel = tuple(pixel)
+                if pixel in colours:
+                    detected = colours[pixel]
+
+        self.get_logger().info(f"detected: {detected}")
 
 def main():
     rclpy.init()
