@@ -31,7 +31,7 @@ class PandaCamera(Node):
                 if pixel in colours:
                     detected = colours[pixel]
 
-        self.get_logger().info(f"detected: {detected}")
+        #self.get_logger().info(f"detected: {detected}")
 
 def main():
     rclpy.init()
