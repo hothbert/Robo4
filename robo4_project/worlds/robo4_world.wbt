@@ -37,6 +37,9 @@ Panda {
     DEF GRIPPER PandaHand {
     }
     Camera {
+      translation 0 0 0.1
+      rotation 0 1 0 -1.5708
+      far 0.4
     }
     DistanceSensor {
       translation 0 0.1 0.05
