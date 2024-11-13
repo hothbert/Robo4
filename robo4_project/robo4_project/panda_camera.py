@@ -8,20 +8,10 @@ import numpy as np
 class PandaCamera(Node):
     def __init__(self):
         super().__init__('panda_camera')
-
         self.create_subscription(Image, 'Panda/camera/image_color', self._camera_callback, 1)
 
     def _camera_callback(self, msg):
-        pass
-        #we need an additional dependency to interpret images, OpenC
-        
-        # Initialize CvBridge
-        self.bridge = CvBridge()
-        
-        # Subscribe to the updated camera topic
-        self.create_subscription(Image, 'Panda/panda_camera/image_color', self._camera_callback, 10)
 
-    def _camera_callback(self, msg):
         self.get_logger().info("Received an image")  # Debug log to check if image is received
         
         # Convert the ROS Image message to an OpenCV image
