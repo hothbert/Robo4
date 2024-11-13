@@ -15,9 +15,9 @@
             </ros>
         </device>
         <!-- Camera sensor configuration -->
-        <device reference="camera" type="PandaCamera">
+        <device reference="colour" type="PandaCamera">
             <ros>
-                <topicName>Panda/panda_camera/image_color</topicName> 
+                <topicName>Panda/camera/image_color</topicName> 
                 <alwaysOn>true</alwaysOn>
             </ros>
             <!-- Configure camera settings if needed -->

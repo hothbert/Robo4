@@ -6,6 +6,7 @@ EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/project
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/factory/conveyors/protos/ConveyorBelt.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/solids/protos/SolidBox.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/robots/franka_emika/panda/protos/Panda.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/robots/franka_emika/panda/protos/PandaHand.proto"
 
 WorldInfo {
 }
@@ -43,8 +44,6 @@ Panda {
       name "panda_distance_sensor"
       type "generic"
       lookupTable [0 0 0, 1 0.5 0.1, 10 0.1 0.9]
-      maxRange 0.5
-      aperature 0.5
       samplingPeriod 32
     }
   ]
