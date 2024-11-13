@@ -14,11 +14,19 @@
                 <alwaysOn>true</alwaysOn>
             </ros>
         </device>
-        <device reference="colour" type = "PandaCamera">
+        <!-- Camera sensor configuration -->
+        <device reference="camera" type="PandaCamera">
             <ros>
-                <topicName>Panda/camera/image_color</topicName>
+                <topicName>Panda/panda_camera/image_color</topicName> 
                 <alwaysOn>true</alwaysOn>
             </ros>
+            <!-- Configure camera settings if needed -->
+            <width>640</width>
+            <height>480</height>
+            <fieldOfView>1.0</fieldOfView>
+            <near>0.1</near>
+            <far>10.0</far>
         </device>
     </webots>
 </robot>
+
