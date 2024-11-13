@@ -37,7 +37,7 @@ class PandaCamera(Node):
                 detected_colours.append(colour)
         
         if detected_colours:
-            self.get_logger().info(f"Detected colors: {', '.join(detected_colors)}")
+            self.get_logger().info(f"Detected colors: {', '.join(detected_colours)}")
         else:
             self.get_logger().info("No specific colors detected")
 
