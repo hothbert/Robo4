@@ -1,5 +1,7 @@
 <?xml version="1.0"?>
-<robot name="/home/holly/ros2_ws/src/demo.urdf" xmlns:xacro="http://ros.org/wiki/xacro">
+<robot name="Panda" xmlns:xacro="http://ros.org/wiki/xacro">
+  <!-- this section defines the physical body of the robot so ros2 can see it an know how to move the joints-->
+  <!-- most of this was already provided with the panda robot so we didnt need to implement it ourselves -->
   <link name="base_link">
   </link>
   <link name="solid">
@@ -372,20 +374,6 @@
       </geometry>
     </collision>
   </link>
-  <link name="panda_distance_sensor">
-  </link>
-  <joint name="panda_link7_panda_distance_sensor_joint" type="fixed">
-    <parent link="panda_link7"/>
-    <child link="panda_distance_sensor"/>
-    <origin xyz="0 0 0.649" rpy="3.141593 1.570793 3.141593"/>
-  </joint>
-  <link name="camera">
-  </link>
-  <joint name="panda_link7_camera_joint" type="fixed">
-    <parent link="panda_link7"/>
-    <child link="camera"/>
-    <origin xyz="0 0 0.207" rpy="1.570796 -1.570793 1.570796"/>
-  </joint>
   <link name="panda hand">
     <visual>
       <origin xyz="0 0 0.03" rpy="0 0 -0.785398"/>
@@ -424,12 +412,12 @@
       </geometry>
     </collision>
   </link>
-  <joint name="panda_link7_panda hand_joint" type="fixed">
+  <joint name="panda_link7_panda_hand_joint" type="fixed">
     <parent link="panda_link7"/>
     <child link="panda hand"/>
     <origin xyz="0 0 0.107" rpy="0 0 0"/>
   </joint>
-  <joint name="panda_finger::left" type="prismatic">
+  <joint name="panda_finger_joint1" type="prismatic">
     <parent link="panda hand"/>
     <child link="panda_rightfinger"/>
     <axis xyz="0.707107 -0.707107 0"/>
@@ -474,7 +462,7 @@
       </geometry>
     </collision>
   </link>
-  <joint name="panda_finger::right" type="prismatic">
+  <joint name="panda_finger_joint2" type="prismatic">
     <parent link="panda hand"/>
     <child link="panda_leftfinger"/>
     <axis xyz="-0.707107 0.707107 0"/>
@@ -519,4 +507,20 @@
       </geometry>
     </collision>
   </link>
+  <!-- this is where we are defining the webots sensors that our nodes use -->
+  <webots>
+    <plugin type="robo4_project.panda_driver.PandaRobotDriver" />
+    <device reference="panda_distance_sensor" type = "DistanceSensor">
+      <ros>
+        <topicName>Panda/panda_distance_sensor</topicName>
+        <alwaysOn>true</alwaysOn>
+      </ros>
+    </device>
+    <device reference="colour" type="PandaCamera">
+      <ros>
+        <topicName>Panda/camera/image_color</topicName> 
+        <alwaysOn>true</alwaysOn>
+      </ros>
+    </device>
+  </webots>
 </robot>
