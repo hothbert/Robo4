@@ -5,7 +5,7 @@ sceneTreePerspectives: 000000ff00000001000000030000001c000000c0000000fa010000000
 maximizedDockId: -1
 centralWidgetVisible: 1
 orthographicViewHeight: 1
-textFiles: 1 "../../../../../../usr/local/webots/projects/robots/franka_emika/panda/controllers/panda_arm_demo/panda_arm_demo.c" "../../../../../../usr/local/webots/projects/robots/franka_emika/panda/worlds/panda.wbt"
+textFiles: 0 "../../../../../../usr/local/webots/projects/robots/franka_emika/panda/controllers/panda_arm_demo/panda_arm_demo.c" "../../../../../../usr/local/webots/projects/robots/franka_emika/panda/worlds/panda.wbt"
 globalOptionalRendering: CameraFrustums::DistanceSensorRays
 consoles: Console:All:All
 renderingDevicePerspectives: Panda:camera;1;2.95313;0;0
