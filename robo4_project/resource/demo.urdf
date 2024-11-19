@@ -30,18 +30,11 @@
       </geometry>
     </collision>
   </link>
-  <transmission name="trans_base_link_solid_joint">
-    <type>transmission_interface/SimpleTransmission</type>
-    <joint name="base_link_solid_joint" type="fixed">
-      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
-      <parent link="base_link"/>
-      <child link="solid"/>
-      <origin xyz="-0.000005 0 -0.000272" rpy="-0.000003 0.00006 0"/>
-    </joint>
-    <actuator name="actuator_base_link_solid_joint">
-      <hardwareInterface>hardware_interface/ActuatorInterface</hardwareInterface>
-    </actuator>
-  </transmission>
+  <joint name="base_link_solid_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="solid"/>
+    <origin xyz="-0.000005 0 -0.000272" rpy="-0.000003 0.00006 0"/>
+  </joint>
   <transmission name = "trans_panda_joint1">
     <type>transmission_interface/SimpleTransmission</type>
     <joint name="panda_joint1" type="revolute">
@@ -430,7 +423,7 @@
       </geometry>
     </collision>
   </link>
-  <link name="panda hand">
+  <link name="panda_hand">
     <visual>
       <origin xyz="0 0 0.03" rpy="0 0 -0.785398"/>
       <geometry>
@@ -468,23 +461,16 @@
       </geometry>
     </collision>
   </link>
-  <transmission name="trans_panda_link7_panda_hand_joint">
-    <type>transmission_interface/SimpleTransmission</type>
-    <joint name="panda_link7_panda_hand_joint" type="fixed">
-      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
-      <parent link="panda_link7"/>
-      <child link="panda hand"/>
-      <origin xyz="0 0 0.107" rpy="0 0 0"/>
-    </joint>
-    <actuator name="actuator_panda_link7_panda_hand_joint">
-      <hardwareInterface>hardware_interface/ActuatorInterface</hardwareInterface>
-    </actuator>
-  </transmission>
+  <joint name="panda_link7_panda_hand_joint" type="fixed">
+    <parent link="panda_link7"/>
+    <child link="panda_hand"/>
+    <origin xyz="0 0 0.107" rpy="0 0 0"/>
+  </joint>
   <transmission name="trans_panda_finger_joint1">
     <type>transmission_interface/SimpleTransmission</type>
     <joint name="panda_finger_joint1" type="prismatic">
       <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
-      <parent link="panda hand"/>
+      <parent link="panda_hand"/>
       <child link="panda_rightfinger"/>
       <axis xyz="0.707107 -0.707107 0"/>
       <origin xyz="-0.014101 0.005841 0.0584" rpy="0 0 -0.785398"/>
@@ -536,7 +522,7 @@
     <type>transmission_interface/SimpleTransmission</type>
     <joint name="panda_finger_joint2" type="prismatic">
       <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
-      <parent link="panda hand"/>
+      <parent link="panda_hand"/>
       <child link="panda_leftfinger"/>
       <axis xyz="-0.707107 0.707107 0"/>
       <origin xyz="0.028242 -0.019958 0.0584" rpy="0 0 -0.785398"/>
