@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <robot name="Panda">
-  <!-- ignore this -->
+  <!-- ignore this it is trash!!!!!!!!!!! panda.urdf for the win-->
   <link name="base_link">
   </link>
   <webots>
