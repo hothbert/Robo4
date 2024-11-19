@@ -30,18 +30,32 @@
       </geometry>
     </collision>
   </link>
-  <joint name="base_link_solid_joint" type="fixed">
-    <parent link="base_link"/>
-    <child link="solid"/>
-    <origin xyz="-0.000005 0 -0.000272" rpy="-0.000003 0.00006 0"/>
-  </joint>
-  <joint name="panda_joint1" type="revolute">
-    <parent link="solid"/>
-    <child link="panda_link1"/>
-    <axis xyz="0 0 1"/>
-    <limit effort="87" lower="-2.9671" upper="2.9671" velocity="2.5"/>
-    <origin xyz="0 0 0.14" rpy="0 0 0.000051"/>
-  </joint>
+  <transmission name="trans_base_link_solid_joint">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="base_link_solid_joint" type="fixed">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      <parent link="base_link"/>
+      <child link="solid"/>
+      <origin xyz="-0.000005 0 -0.000272" rpy="-0.000003 0.00006 0"/>
+    </joint>
+    <actuator name="actuator_base_link_solid_joint">
+      <hardwareInterface>hardware_interface/ActuatorInterface</hardwareInterface>
+    </actuator>
+  </transmission>
+  <transmission name = "trans_panda_joint1">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="panda_joint1" type="revolute">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      <parent link="solid"/>
+      <child link="panda_link1"/>
+      <axis xyz="0 0 1"/>
+      <limit effort="87" lower="-2.9671" upper="2.9671" velocity="2.5"/>
+      <origin xyz="0 0 0.14" rpy="0 0 0.000051"/>
+    </joint>
+    <actuator name="actuator_panda_joint1">
+      <hardwareInterface>hardware_interface/ActuatorInterface</hardwareInterface>
+    </actuator>
+  </transmission> 
   <link name="panda_link1">
     <visual>
       <origin xyz="0 0 0.193" rpy="-1.570795 0 0"/>
@@ -92,13 +106,20 @@
       </geometry>
     </collision>
   </link>
-  <joint name="panda_joint2" type="revolute">
-    <parent link="panda_link1"/>
-    <child link="panda_link2"/>
-    <axis xyz="0 0 1"/>
-    <limit effort="87" lower="-1.8326" upper="1.8326" velocity="2.5"/>
-    <origin xyz="0 0 0.193" rpy="-1.570796 0.220254 0"/>
-  </joint>
+  <transmission name="trans_panda_joint2">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="panda_joint2" type="revolute">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      <parent link="panda_link1"/>
+      <child link="panda_link2"/>
+      <axis xyz="0 0 1"/>
+      <limit effort="87" lower="-1.8326" upper="1.8326" velocity="2.5"/>
+      <origin xyz="0 0 0.193" rpy="-1.570796 0.220254 0"/>
+    </joint>
+    <actuator name="actuator_panda_joint2">
+      <hardwareInterface>hardware_interface/ActuatorInterface</hardwareInterface>
+    </actuator>
+  </transmission>
   <link name="panda_link2">
     <visual>
       <origin xyz="0 -0.195 0" rpy="-1.570795 0 0"/>
@@ -149,13 +170,20 @@
       </geometry>
     </collision>
   </link>
-  <joint name="panda_joint3" type="revolute">
-    <parent link="panda_link2"/>
-    <child link="panda_link3"/>
-    <axis xyz="0 0 1"/>
-    <limit effort="87" lower="-2.9671" upper="2.9671" velocity="2.5"/>
-    <origin xyz="0 -0.195 0" rpy="1.570796 0.000282 0"/>
-  </joint>
+  <transmission name = "trans_panda_joint3">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="panda_joint3" type="revolute">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      <parent link="panda_link2"/>
+      <child link="panda_link3"/>
+      <axis xyz="0 0 1"/>
+      <limit effort="87" lower="-2.9671" upper="2.9671" velocity="2.5"/>
+      <origin xyz="0 -0.195 0" rpy="1.570796 0.000282 0"/>
+    </joint>
+    <actuator name="actuator_panda_joint3">
+      <hardwareInterface>hardware_interface/ActuatorInterface</hardwareInterface>
+    </actuator>
+  </transmission> 
   <link name="panda_link3">
     <visual>
       <origin xyz="0.0825 0 0.121" rpy="-1.5708 0 0"/>
@@ -194,13 +222,20 @@
       </geometry>
     </collision>
   </link>
-  <joint name="panda_joint4" type="revolute">
-    <parent link="panda_link3"/>
-    <child link="panda_link4"/>
-    <axis xyz="0.000001 0 1"/>
-    <limit effort="87" lower="-3.1416" upper="-0.4" velocity="2.5"/>
-    <origin xyz="0.0825 0 0.121" rpy="-1.570796 0.832446 -3.141592"/>
-  </joint>
+  <transmission name = "trans_panda_joint4">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="panda_joint4" type="revolute">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      <parent link="panda_link3"/>
+      <child link="panda_link4"/>
+      <axis xyz="0.000001 0 1"/>
+      <limit effort="87" lower="-3.1416" upper="-0.4" velocity="2.5"/>
+      <origin xyz="0.0825 0 0.121" rpy="-1.570796 0.832446 -3.141592"/>
+    </joint>
+    <actuator name="actuator_panda_joint4">
+      <hardwareInterface>hardware_interface/ActuatorInterface</hardwareInterface>
+    </actuator>
+  </transmission>  
   <link name="panda_link4">
     <visual>
       <origin xyz="-0.08 0.115 0" rpy="-1.570795 0 0"/>
@@ -239,13 +274,20 @@
       </geometry>
     </collision>
   </link>
-  <joint name="panda_joint5" type="revolute">
-    <parent link="panda_link4"/>
-    <child link="panda_link5"/>
-    <axis xyz="0 0 1"/>
-    <limit effort="12" lower="-2.9671" upper="2.9671" velocity="3"/>
-    <origin xyz="-0.0825 0.125 0" rpy="-1.570796 -0.000013 0"/>
-  </joint>
+  <transmission name="trans_panda_joint5">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="panda_joint5" type="revolute">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      <parent link="panda_link4"/>
+      <child link="panda_link5"/>
+      <axis xyz="0 0 1"/>
+      <limit effort="12" lower="-2.9671" upper="2.9671" velocity="3"/>
+      <origin xyz="-0.0825 0.125 0" rpy="-1.570796 -0.000013 0"/>
+    </joint>
+    <actuator name = "actuator_panda_joint5">
+      <hardwareInterface>hardware_interface/ActuatorInterface</hardwareInterface>
+    </actuator>
+  </transmission>  
   <link name="panda_link5">
     <visual>
       <origin xyz="0 0.037 0.259" rpy="-1.570795 0 0"/>
@@ -296,13 +338,20 @@
       </geometry>
     </collision>
   </link>
-  <joint name="panda_joint6" type="revolute">
-    <parent link="panda_link5"/>
-    <child link="panda_link6"/>
-    <axis xyz="0 0 1"/>
-    <limit effort="12" lower="-0.0873" upper="3.8223" velocity="3"/>
-    <origin xyz="0 0 0.259" rpy="-1.570797 -0.61123 -3.141593"/>
-  </joint>
+  <transmission name="trans_panda_joint6">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="panda_joint6" type="revolute">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      <parent link="panda_link5"/>
+      <child link="panda_link6"/>
+      <axis xyz="0 0 1"/>
+      <limit effort="12" lower="-0.0873" upper="3.8223" velocity="3"/>
+      <origin xyz="0 0 0.259" rpy="-1.570797 -0.61123 -3.141593"/>
+    </joint>
+    <actuator name="actuator_panda_joint6">
+      <hardwareInterface>hardware_interface/ActuatorInterface</hardwareInterface>
+    </actuator>
+  </transmission>
   <link name="panda_link6">
     <visual>
       <origin xyz="0.09 -0.015 0" rpy="1.5708 0 0"/>
@@ -341,13 +390,20 @@
       </geometry>
     </collision>
   </link>
-  <joint name="panda_joint7" type="revolute">
-    <parent link="panda_link6"/>
-    <child link="panda_link7"/>
-    <axis xyz="0 0 1"/>
-    <limit effort="12" lower="-2.9671" upper="2.9671" velocity="3"/>
-    <origin xyz="0.088 -0.058 0" rpy="1.570796 -0.789999 0"/>
-  </joint>
+  <transmission name = "trans_panda_joint7">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="panda_joint7" type="revolute">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      <parent link="panda_link6"/>
+      <child link="panda_link7"/>
+      <axis xyz="0 0 1"/>
+      <limit effort="12" lower="-2.9671" upper="2.9671" velocity="3"/>
+      <origin xyz="0.088 -0.058 0" rpy="1.570796 -0.789999 0"/>
+    </joint>
+    <actuator name = "actuator_panda_joint7">
+      <hardwareInterface>hardware_interface/ActuatorInterface</hardwareInterface>
+    </actuator>
+  </transmission>  
   <link name="panda_link7">
     <visual>
       <origin xyz="0 0 0.017" rpy="0 0 0"/>
@@ -412,18 +468,32 @@
       </geometry>
     </collision>
   </link>
-  <joint name="panda_link7_panda_hand_joint" type="fixed">
-    <parent link="panda_link7"/>
-    <child link="panda hand"/>
-    <origin xyz="0 0 0.107" rpy="0 0 0"/>
-  </joint>
-  <joint name="panda_finger_joint1" type="prismatic">
-    <parent link="panda hand"/>
-    <child link="panda_rightfinger"/>
-    <axis xyz="0.707107 -0.707107 0"/>
-    <origin xyz="-0.014101 0.005841 0.0584" rpy="0 0 -0.785398"/>
-    <limit effort="100" lower="0" upper="0.04" velocity="0.2"/>
-  </joint>
+  <transmission name="trans_panda_link7_panda_hand_joint">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="panda_link7_panda_hand_joint" type="fixed">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      <parent link="panda_link7"/>
+      <child link="panda hand"/>
+      <origin xyz="0 0 0.107" rpy="0 0 0"/>
+    </joint>
+    <actuator name="actuator_panda_link7_panda_hand_joint">
+      <hardwareInterface>hardware_interface/ActuatorInterface</hardwareInterface>
+    </actuator>
+  </transmission>
+  <transmission name="trans_panda_finger_joint1">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="panda_finger_joint1" type="prismatic">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      <parent link="panda hand"/>
+      <child link="panda_rightfinger"/>
+      <axis xyz="0.707107 -0.707107 0"/>
+      <origin xyz="-0.014101 0.005841 0.0584" rpy="0 0 -0.785398"/>
+      <limit effort="100" lower="0" upper="0.04" velocity="0.2"/>
+    </joint>
+    <actuator name="actuator_panda_finger_joint1">
+      <hardwareInterface>hardware_interface/ActuatorInterface</hardwareInterface>
+    </actuator>
+  </transmission>
   <link name="panda_rightfinger">
     <visual>
       <origin xyz="0.014101 -0.021101 0.045" rpy="0 0 0"/>
@@ -462,13 +532,20 @@
       </geometry>
     </collision>
   </link>
-  <joint name="panda_finger_joint2" type="prismatic">
-    <parent link="panda hand"/>
-    <child link="panda_leftfinger"/>
-    <axis xyz="-0.707107 0.707107 0"/>
-    <origin xyz="0.028242 -0.019958 0.0584" rpy="0 0 -0.785398"/>
-    <limit effort="100" lower="0" upper="0.04" velocity="0.2"/>
-  </joint>
+  <transmission name="trans_panda_finger_joint2">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="panda_finger_joint2" type="prismatic">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      <parent link="panda hand"/>
+      <child link="panda_leftfinger"/>
+      <axis xyz="-0.707107 0.707107 0"/>
+      <origin xyz="0.028242 -0.019958 0.0584" rpy="0 0 -0.785398"/>
+      <limit effort="100" lower="0" upper="0.04" velocity="0.2"/>
+    </joint>
+    <actuator name="actuator_panda_finger_join2">
+      <hardwareInterface>hardware_interafce/ActuatorInterface</hardwareInterface>
+    </actuator>
+  </transmission>
   <link name="panda_leftfinger">
     <visual>
       <origin xyz="-0.014142 0.021142 0.045" rpy="0 0 0"/>
