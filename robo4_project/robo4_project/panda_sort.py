@@ -3,6 +3,7 @@ from rclpy.node import Node
 from std_msgs.msg import String
 from sensor_msgs.msg import Range
 
+
 #this should serve as our node for moving things idk
 
 class PandaSort(Node):
@@ -13,6 +14,19 @@ class PandaSort(Node):
         self.create_subscription(String, '/colour_msg', self.move_block, 10)
         
         #publish commands or something here
+        self.publisher = self.create_publisher(String, '/gripper_command', 10)
+
+    def open_gripper(self):
+        msg = String()
+        msg.data = 'open'
+        self.publisher.publish(msg)
+        self.get_logger().info("Gripper open command sent.")
+
+    #def close_gripper(self):
+        #msg = String()
+        #msg.data = 'close'
+        #self.publisher.publish(msg)
+        #self.get_logger().info("Gripper close command sent.")
         
     def move_block(self, msg):
         #i think idealy, we stop the conveyer belt from moving to make it easier to pick up
@@ -21,9 +35,19 @@ class PandaSort(Node):
         if colour_value in ('blue', 'green', 'cyan'):
             self.get_logger().info(f"{colour_value} block detected!")
             #send open gripper command
+            self.open_gripper()
+            
             #bend down and pick up block
             #close gripper
+            #self.close_gripper()
+            
             #if its blue turn to left and drop that shit on the floor
+            if colour_value == 'blue':
+                self.get_logger().info("Moving block to the left.")
+            elif colour_value == 'cyan':
+                self.get_logger().info("Moving block to the right.")
+            elif colour_value == 'green':
+                self.get_logger().info("Moving block forward.")
             #right for cyan
             #a third direction for green
         else:
@@ -36,6 +60,7 @@ class PandaSort(Node):
 def main():
     rclpy.init()
     node = PandaSort()
+    node.open_gripper() 
     rclpy.spin(node)
     node.destroy_node()
     rclpy.shutdown()
