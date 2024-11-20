@@ -5,7 +5,7 @@ from std_msgs.msg import String
 
 class PandaRobotDriver(WebotsController):
     def init(self, webots_node, properties):
-        super().init(webots_node.properties)
+        super().__init__(webots_node, properties)
         self.__robot=webots_node.robot
 
         self.gripper_left = self.__robot.getDevice('panda_finger_joint1')  # Adjust with actual motor name
