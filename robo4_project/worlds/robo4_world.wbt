@@ -22,8 +22,8 @@ Floor {
 }
 ConveyorBelt {
   translation -0.5 0 -0.47
-  size 6 0.5 0.8
-  speed 0.1
+  size 6 0.5 0.6
+  speed 0.2
 }
 Panda {
   translation 1.38 -0.559997 0.04
@@ -54,7 +54,7 @@ Panda {
   ]
 }
 SolidBox {
-  translation -0.4 0 0.4
+  translation -0.4 0 0.2
   rotation 0.00604410711083473 -0.9999755559656655 -0.003515144433904047 0.0007028691796745069
   name "blueBox"
   size 0.07 0.07 0.07
@@ -71,7 +71,7 @@ SolidBox {
   }
 }
 SolidBox {
-  translation 0 0 0.4
+  translation 0 0 0.2
   rotation 0.00604410711083473 -0.9999755559656655 -0.003515144433904047 0.0007028691796745069
   name "greenBox"
   size 0.07 0.07 0.07
@@ -88,7 +88,7 @@ SolidBox {
   }
 }
 SolidBox {
-  translation 0.4 0 0.4
+  translation 0.4 0 0.2
   rotation 0.00604410711083473 -0.9999755559656655 -0.003515144433904047 0.0007028691796745069
   name "magentaBox"
   size 0.07 0.07 0.07
