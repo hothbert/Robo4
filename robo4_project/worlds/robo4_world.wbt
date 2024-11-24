@@ -7,23 +7,26 @@ EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/project
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/solids/protos/SolidBox.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/robots/franka_emika/panda/protos/Panda.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/robots/franka_emika/panda/protos/PandaHand.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/appearances/protos/Parquetry.proto"
 
 WorldInfo {
 }
 Viewpoint {
-  orientation -0.16080568921013905 -0.2134314058064808 0.9636330034474335 4.955763417598931
-  position -0.14171894832985074 3.1776852670263485 1.864675171456141
+  orientation -0.10370615869985479 -0.16518535036190227 0.9807950003306176 5.144010098846278
+  position -0.2190340937638175 3.3420971920120697 1.1019542389994867
 }
 TexturedBackground {
 }
 TexturedBackgroundLight {
 }
 Floor {
+  appearance Parquetry {
+  }
 }
 ConveyorBelt {
   translation -0.5 0 -0.47
   size 6 0.5 0.6
-  speed 0.2
+  speed 0.1
 }
 Panda {
   translation 1.38 -0.559997 0.04
@@ -54,8 +57,8 @@ Panda {
   ]
 }
 SolidBox {
-  translation -0.4 0 0.2
-  rotation 0.00604410711083473 -0.9999755559656655 -0.003515144433904047 0.0007028691796745069
+  translation 0.6 -9.010783977890742e-06 0.16477387189020606
+  rotation -0.0021409090953961028 0.9552483651817169 -0.2957971895165716 3.615594962844094e-05
   name "blueBox"
   size 0.07 0.07 0.07
   appearance Appearance {
@@ -71,8 +74,8 @@ SolidBox {
   }
 }
 SolidBox {
-  translation 0 0 0.2
-  rotation 0.00604410711083473 -0.9999755559656655 -0.003515144433904047 0.0007028691796745069
+  translation 0 -1.6930750907477304e-05 0.16557779135829717
+  rotation -0.03435408067732627 -0.9981572723864834 -0.05001856378177188 0.027683970180604204
   name "greenBox"
   size 0.07 0.07 0.07
   appearance Appearance {
@@ -88,9 +91,9 @@ SolidBox {
   }
 }
 SolidBox {
-  translation 0.4 0 0.2
-  rotation 0.00604410711083473 -0.9999755559656655 -0.003515144433904047 0.0007028691796745069
-  name "magentaBox"
+  translation -0.6 -0.00014185536360064512 0.1647337197358716
+  rotation 0.0696997585923091 -0.9975680145487908 -1.1651264607939563e-06 3.141558194291159
+  name "cyanBox"
   size 0.07 0.07 0.07
   appearance Appearance {
     material Material {
