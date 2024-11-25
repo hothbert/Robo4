@@ -8,12 +8,13 @@ EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/project
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/robots/franka_emika/panda/protos/Panda.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/robots/franka_emika/panda/protos/PandaHand.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/appearances/protos/Parquetry.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/factory/containers/protos/PlasticCrate.proto"
 
 WorldInfo {
 }
 Viewpoint {
-  orientation -0.10370615869985479 -0.16518535036190227 0.9807950003306176 5.144010098846278
-  position -0.2190340937638175 3.3420971920120697 1.1019542389994867
+  orientation -0.3088324900372731 -0.4604925119512955 0.8322073897377766 4.926424880534118
+  position -0.5081022973809883 3.6675028789177295 3.857844813237479
 }
 TexturedBackground {
 }
@@ -22,6 +23,21 @@ TexturedBackgroundLight {
 Floor {
   appearance Parquetry {
   }
+}
+PlasticCrate {
+  translation 2.05 -0.85 0
+  name "crate_blue"
+  size 0.5 0.5 0.2
+}
+PlasticCrate {
+  translation 1.39 -1.29 0
+  name "crate_cyan"
+  size 0.5 0.5 0.2
+}
+PlasticCrate {
+  translation 0.75 -0.85 0
+  name "crate_green"
+  size 0.5 0.5 0.2
 }
 ConveyorBelt {
   translation -0.5 0 -0.47
