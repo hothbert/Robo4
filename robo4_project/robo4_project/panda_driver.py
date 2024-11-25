@@ -47,13 +47,13 @@ class PandaRobotDriver(WebotsController):
             self.joint_4.setPosition(-1.77)
             self.joint_6.setPosition(1.6)
         elif command == "turn_blue":        # might want to play with these to get it to drop the block
-            self.joint_1.setPosition(-1.8)  # gently, without coliding with other blocks on the conveyer belt
+            self.joint_1.setPosition(-2.0)  # gently, without coliding with other blocks on the conveyer belt
             self.joint_2.setPosition(0)
         elif command == "turn_green":
-            self.joint_1.setPosition(1.8)
+            self.joint_1.setPosition(2.0)
             self.joint_2.setPosition(0)
         elif command == "turn_cyan":
-            self.joint_1.setPosition(2.9)
+            self.joint_1.setPosition(3.2)
             self.joint_2.setPosition(0)
         elif command == "turn_back":
             self.joint_1.setPosition(0)

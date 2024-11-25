@@ -65,13 +65,14 @@ class PandaSort(Node):
                 elif block_colour == 'green':
                     self.move_joint('turn_green')
             
-            time.sleep(0.9)
+            time.sleep(1.8)
             self.gripper('open')   #this drops the block, we might want a container for them to go into
             time.sleep(0.5)        #because currently they bounce, and it would look nicer too.
-            self.move_joint('turn_back')
             self.gripper('close')
             self.move_joint('stand')
-            time.sleep(0.75) #stops the function from continuing until robot is completely back in position
+            time.sleep(0.5)
+            self.move_joint('turn_back')
+            time.sleep(1.0) #stops the function from continuing until robot is completely back in position
             self.is_moving_block = False #returned to position
         else:
             self.get_logger().info("waiting for block...")
