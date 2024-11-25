@@ -71,7 +71,7 @@ class PandaSort(Node):
             self.move_joint('turn_back')
             self.gripper('close')
             self.move_joint('stand')
-            time.sleep(0.3) #stops the function from continuing until robot is completely back in position
+            time.sleep(0.75) #stops the function from continuing until robot is completely back in position
             self.is_moving_block = False #returned to position
         else:
             self.get_logger().info("waiting for block...")
