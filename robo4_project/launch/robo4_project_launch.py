@@ -34,8 +34,8 @@ def generate_launch_description():
     )
 
     panda_sort = Node(
-        package = 'robo4_project',
-        executable = 'panda_sort'
+        package='robo4_project',
+        executable='panda_sort'
     )
 
     return LaunchDescription([

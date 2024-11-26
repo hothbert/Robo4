@@ -23,7 +23,7 @@ class PandaSort(Node):
         msg = String()
         msg.data = command
         self.grip_publisher.publish(msg)
-        self.get_logger().info("Gripper close command sent.")
+        #self.get_logger().info("Gripper close command sent.")
 
     def move_joint(self, command):
         msg = String()
@@ -34,7 +34,7 @@ class PandaSort(Node):
         colour_value = msg.data
         if colour_value in ('blue', 'green', 'cyan'):
             self.colour = colour_value
-            self.get_logger().info(f"{self.colour} block detected!")
+            #self.get_logger().info(f"{self.colour} block detected!")
         else:
             self.colour = None
 
@@ -45,7 +45,7 @@ class PandaSort(Node):
             return #prevent further calls to this function until the block has been moved
         
         distance = msg.range
-        self.get_logger().info(f"detected distance: {distance}")
+        #self.get_logger().info(f"detected distance: {distance}")
 
         if distance < 0.5:
             self.is_moving_block = True
@@ -75,7 +75,8 @@ class PandaSort(Node):
             time.sleep(1.0) #stops the function from continuing until robot is completely back in position
             self.is_moving_block = False #returned to position
         else:
-            self.get_logger().info("waiting for block...")
+            pass
+            #self.get_logger().info("waiting for block...")
 
 def main():
     rclpy.init()
