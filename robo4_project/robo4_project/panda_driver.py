@@ -53,7 +53,7 @@ class PandaRobotDriver(WebotsController):
             self.joint_1.setPosition(2.0)
             self.joint_2.setPosition(0)
         elif command == "turn_cyan":
-            self.joint_1.setPosition(3.2)
+            self.joint_1.setPosition(2.95)
             self.joint_2.setPosition(0)
         elif command == "turn_back":
             self.joint_1.setPosition(0)
