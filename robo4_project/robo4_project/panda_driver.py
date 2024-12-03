@@ -20,6 +20,10 @@ class PandaRobotDriver(WebotsController):
         
         self.supervisor=Supervisor()
 
+        self.green_array = []
+        self.cyan_array = []
+        self.blue_array = []
+
         self.gripper_left = self.__robot.getDevice('panda_finger::left')
         self.gripper_right = self.__robot.getDevice('panda_finger::right')
         self.joint_4 = self.__robot.getDevice('panda_joint4')
@@ -71,8 +75,10 @@ class PandaRobotDriver(WebotsController):
         self.node.get_logger().info(f"Num: {num}")
 
         if num == 1:
+            green_count = 0
             new_box = '''
             SolidBox {
+                name "greenBox"
                 translation -2.4 0.0098 0.164785
                 rotation -0.03435408067732627 -0.9981572723864834 -0.05001856378177188 0.027683970180604204
                 size 0.07 0.07 0.07
@@ -89,10 +95,19 @@ class PandaRobotDriver(WebotsController):
                 }  
             }
             '''
+            green_count += 1
+
+            priority = random.randint(1,5)
+            if green_count == 0:
+                self.green_array.append((priority, "greenBox"))
+            else:
+                self.green_array.append((priority, f"greenBox({green_count})"))
 
         if num == 2:
+            cyan_count = 0
             new_box = '''
             SolidBox {
+                name "cyanBox"
                 translation -2.4 0.0098 0.164785
                 rotation -0.03435408067732627 -0.9981572723864834 -0.05001856378177188 0.027683970180604204
                 size 0.07 0.07 0.07
@@ -109,10 +124,19 @@ class PandaRobotDriver(WebotsController):
                 }
             }
             '''
+            cyan_count += 1
+
+            priority = random.randint(1,5)
+            if cyan_count == 0:
+                self.cyan_array.append((priority, "cyanBox"))
+            else:
+                self.cyan_array.append((priority, f"cyanBox({cyan_count})"))
 
         if num == 3:
+            blue_count = 0
             new_box = '''
             SolidBox {
+                name "blueBox"
                 translation -2.4 0.0098 0.164785
                 rotation -0.03435408067732627 -0.9981572723864834 -0.05001856378177188 0.027683970180604204
                 size 0.07 0.07 0.07
@@ -129,6 +153,14 @@ class PandaRobotDriver(WebotsController):
                 }
             }
             '''
+            blue_count += 1
+
+            priority = random.randint(1,5)
+            if blue_count == 0:
+                self.blue_array.append((priority, "blueBox"))
+            else:
+                self.blue_array.append((priority, f"blueBox({blue_count})"))
+
         self.node.get_logger().info("Box added function called.")
 
         root = self.supervisor.getRoot()
