@@ -3,7 +3,7 @@ from rclpy.node import Node
 from controller import Supervisor
 from webots_ros2_driver.webots_controller import WebotsController
 from std_msgs.msg import String
-from robo4_project.priority_queue import PriorityQueue
+from robo4_project.sorted_box_queue import Queue
 import random
 
 
@@ -31,10 +31,12 @@ class PandaRobotDriver(WebotsController):
         self.cyan_array = []
         self.blue_array = []
 
-        # Arrays that store each colour bax after being sorted (Priority Queues)
-        self.green_sorted = PriorityQueue()
-        self.cyan_sorted = PriorityQueue()
-        self.blue_sorted = PriorityQueue()
+        # Arrays that store each colour bax after being sorted into crates
+        self.green_sorted = Queue()
+        self.cyan_sorted = Queue()
+        self.blue_sorted = Queue()
+
+        # self.blue_sorted.merge_sort
 
         self.gripper_left = self.__robot.getDevice('panda_finger::left')
         self.gripper_right = self.__robot.getDevice('panda_finger::right')
@@ -75,21 +77,21 @@ class PandaRobotDriver(WebotsController):
             blueBox = self.blue_array.pop(0)
             self.blue_sorted.add(blueBox)
             self.node.get_logger().info("Blue Box Sorted.")
-            self.node.get_logger().info(f"Blue Box PQ: {str(self.blue_sorted.queue)}")
+            self.node.get_logger().info(f"Blue Box Q: {str(self.blue_sorted.queue)}")
         elif command == "turn_green":
             self.joint_1.setPosition(2.0)
             self.joint_2.setPosition(0)
             greenBox = self.green_array.pop(0)
             self.green_sorted.add(greenBox)
             self.node.get_logger().info("Green Box Sorted.")
-            self.node.get_logger().info(f"Green Box PQ: {str(self.green_sorted.queue)}")
+            self.node.get_logger().info(f"Green Box Q: {str(self.green_sorted.queue)}")
         elif command == "turn_cyan":
             self.joint_1.setPosition(2.95)
             self.joint_2.setPosition(0)
             cyanBox = self.cyan_array.pop(0)
             self.cyan_sorted.add(cyanBox)
             self.node.get_logger().info("Cyan Box Sorted.")
-            self.node.get_logger().info(f"Cyan Box PQ: {str(self.cyan_sorted.queue)}")
+            self.node.get_logger().info(f"Cyan Box Q: {str(self.cyan_sorted.queue)}")
         elif command == "turn_back":
             self.joint_1.setPosition(0)
 

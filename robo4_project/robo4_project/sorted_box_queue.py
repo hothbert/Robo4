@@ -2,7 +2,7 @@
 MergeSort source: https://www.w3schools.com/dsa/dsa_algo_mergesort.php
 """
 
-class PriorityQueue:
+class Queue:
     def __init__(self):
         self.queue = []
 
@@ -36,7 +36,6 @@ class PriorityQueue:
     
     def add(self, item):
         self.queue.append(item)
-        self.queue = self.merge_sort(self.queue)
 
     def pop(self):
         if not self.queue:
@@ -45,4 +44,3 @@ class PriorityQueue:
     
     def size(self):
         return len(self.queue)
-    
