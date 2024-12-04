@@ -26,7 +26,7 @@ class PandaRobotDriver(WebotsController):
         self.cyan_count = 0
         self.blue_count = 0
 
-        # Arrays to store each colour box when spawned (Not sorted)
+        # Arrays to store each colour box when spawned (Not sorted, will be sorted when rover arrives to increase efficiency).
         self.green_array = []
         self.cyan_array = []
         self.blue_array = []
@@ -36,7 +36,7 @@ class PandaRobotDriver(WebotsController):
         self.cyan_sorted = Queue()
         self.blue_sorted = Queue()
 
-        # self.blue_sorted.merge_sort
+        # self.blue_sorted.merge_sort - how to call the sort on an array
 
         self.gripper_left = self.__robot.getDevice('panda_finger::left')
         self.gripper_right = self.__robot.getDevice('panda_finger::right')
