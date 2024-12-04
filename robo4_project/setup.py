@@ -26,6 +26,7 @@ setup(
             'panda_sensor = robo4_project.panda_sensor:main',
             'panda_camera = robo4_project.panda_camera:main',
             'panda_sort = robo4_project.panda_sort:main',
+            'priority_queue = robo4_project.priority_queue:main',
         ],
     },
 )

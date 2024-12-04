@@ -34,7 +34,7 @@ class PandaSort(Node):
         colour_value = msg.data
         if colour_value in ('blue', 'green', 'cyan'):
             self.colour = colour_value
-            #self.get_logger().info(f"{self.colour} block detected!")
+            self.get_logger().info(f"{self.colour} block detected!")
         else:
             self.colour = None
 

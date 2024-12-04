@@ -3,6 +3,7 @@ from rclpy.node import Node
 from controller import Supervisor
 from webots_ros2_driver.webots_controller import WebotsController
 from std_msgs.msg import String
+from robo4_project.priority_queue import PriorityQueue
 import random
 
 
@@ -20,9 +21,20 @@ class PandaRobotDriver(WebotsController):
         
         self.supervisor=Supervisor()
 
+        # Counters for boxes
+        self.green_count = 0
+        self.cyan_count = 0
+        self.blue_count = 0
+
+        # Arrays to store each colour box when spawned (Not sorted)
         self.green_array = []
         self.cyan_array = []
         self.blue_array = []
+
+        # Arrays that store each colour bax after being sorted (Priority Queues)
+        self.green_sorted = PriorityQueue()
+        self.cyan_sorted = PriorityQueue()
+        self.blue_sorted = PriorityQueue()
 
         self.gripper_left = self.__robot.getDevice('panda_finger::left')
         self.gripper_right = self.__robot.getDevice('panda_finger::right')
@@ -71,11 +83,9 @@ class PandaRobotDriver(WebotsController):
 
     def spawn_box(self):
         num = random.randint(1,3)
-
-        self.node.get_logger().info(f"Num: {num}")
+        colour = ""
 
         if num == 1:
-            green_count = 0
             new_box = '''
             SolidBox {
                 name "greenBox"
@@ -95,16 +105,16 @@ class PandaRobotDriver(WebotsController):
                 }  
             }
             '''
-            green_count += 1
-
             priority = random.randint(1,5)
-            if green_count == 0:
+            if self.green_count == 0:
                 self.green_array.append((priority, "greenBox"))
+                name = f"greenBox"
             else:
-                self.green_array.append((priority, f"greenBox({green_count})"))
+                self.green_array.append((priority, f"greenBox({self.green_count})"))
+                name = f"greenBox({self.green_count})"
+            self.green_count += 1
 
         if num == 2:
-            cyan_count = 0
             new_box = '''
             SolidBox {
                 name "cyanBox"
@@ -124,16 +134,16 @@ class PandaRobotDriver(WebotsController):
                 }
             }
             '''
-            cyan_count += 1
-
             priority = random.randint(1,5)
-            if cyan_count == 0:
+            if self.cyan_count == 0:
                 self.cyan_array.append((priority, "cyanBox"))
+                name = "cyanBox"
             else:
-                self.cyan_array.append((priority, f"cyanBox({cyan_count})"))
+                self.cyan_array.append((priority, f"cyanBox({self.cyan_count})"))
+                name = f"cyanBox({self.cyan_count})"
+            self.cyan_count += 1
 
         if num == 3:
-            blue_count = 0
             new_box = '''
             SolidBox {
                 name "blueBox"
@@ -153,21 +163,20 @@ class PandaRobotDriver(WebotsController):
                 }
             }
             '''
-            blue_count += 1
-
             priority = random.randint(1,5)
-            if blue_count == 0:
+            if self.blue_count == 0:
                 self.blue_array.append((priority, "blueBox"))
+                name = f"blueBox"
             else:
-                self.blue_array.append((priority, f"blueBox({blue_count})"))
-
-        self.node.get_logger().info("Box added function called.")
+                self.blue_array.append((priority, f"blueBox({self.blue_count})"))
+                name = f"blueBox({self.blue_count})"
+            self.blue_count += 1
 
         root = self.supervisor.getRoot()
         children_field = root.getField('children')
 
         children_field.importMFNodeFromString(-1, new_box)
-        self.node.get_logger().info("Box added.")
+        self.node.get_logger().info(f"Box spawned - Name: {name} - Priority: {priority}")
 
         self.supervisor.step(int(self.supervisor.getBasicTimeStep()))
 
