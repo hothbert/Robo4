@@ -1,0 +1,6 @@
+<?xml version="1.0" ?>
+<robot name="rover">
+    <webots>
+        <plugin type="robo4_project.rover_driver.RoverDriver" />
+    </webots>
+</robot>

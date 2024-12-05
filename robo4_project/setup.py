@@ -6,6 +6,7 @@ data_files.append(('share/ament_index/resource_index/packages', ['resource/' + p
 data_files.append(('share/' + package_name + '/launch', ['launch/robo4_project_launch.py']))
 data_files.append(('share/' + package_name + '/worlds', ['worlds/robo4_world.wbt']))
 data_files.append(('share/' + package_name + '/resource', ['resource/panda.urdf']))
+data_files.append(('share/' + package_name + '/resource', ['resource/rover.urdf']))
 data_files.append(('share/' + package_name, ['package.xml']))
 
 setup(
@@ -27,6 +28,7 @@ setup(
             'panda_camera = robo4_project.panda_camera:main',
             'panda_sort = robo4_project.panda_sort:main',
             'sorted_box_queue = robo4_project.sorted_box_queue:main',
+            'rover_driver = robo4_project.rover_driver',
         ],
     },
 )

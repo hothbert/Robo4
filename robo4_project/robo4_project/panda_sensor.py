@@ -23,7 +23,6 @@ class PandaSensor(Node):
             message.range = self.detected_range_msg
             self.publisher.publish(message)
 
-    
 def main():
     rclpy.init()
     node = PandaSensor()
