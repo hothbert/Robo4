@@ -1,6 +1,6 @@
 #VRML_SIM R2023b utf8
 
-EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/solids/protos/SolidBox.proto"
+IMPORTABLE EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/solids/protos/SolidBox.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/objects/backgrounds/protos/TexturedBackground.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/floors/protos/Floor.proto"
@@ -9,14 +9,14 @@ EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/project
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/robots/franka_emika/panda/protos/PandaHand.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/appearances/protos/Parquetry.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/factory/containers/protos/PlasticCrate.proto"
-
-IMPORTABLE EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/solids/protos/SolidBox.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/drinks/protos/Can.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/hospital/protos/HandSanitizer.proto"
 
 WorldInfo {
 }
 Viewpoint {
-  orientation 0.43554166555678314 0.4365993624230826 -0.7872003901776097 1.8055528869192783
-  position -1.341305368008938 4.988259341070105 8.574465842842441
+  orientation 0.2568680647347511 0.34516222048315226 -0.9027080584943082 1.3790478438398288
+  position -3.398869757865368 11.275649408143456 6.963745262950383
 }
 TexturedBackground {
 }
@@ -26,7 +26,6 @@ Floor {
   appearance Parquetry {
   }
 }
-
 PlasticCrate {
   translation 1.95 -0.77 0
   name "crate_blue"
@@ -42,7 +41,6 @@ PlasticCrate {
   name "crate_green"
   size 0.5 0.5 0.2
 }
-
 ConveyorBelt {
   translation -0.5 0 -0.47
   size 6 0.5 0.6
@@ -78,7 +76,6 @@ Panda {
 }
 Robot {
   translation -1 -4.3 0
-
   children [
     HingeJoint {
       jointParameters HingeJointParameters {
@@ -93,7 +90,7 @@ Robot {
       endPoint Solid {
         translation 0 0.045 0.025
         children [
-          DEF WHEEL Transform {
+          DEF WHEEL Pose {
             rotation 1 0 0 1.5707996938995747
             children [
               Shape {
@@ -137,7 +134,7 @@ Robot {
         }
       }
     }
-    Transform {
+    Pose {
       translation 0 0 0.0415
       children [
         Shape {
@@ -157,7 +154,7 @@ Robot {
       translation 0.042 0.02 0.063
       rotation 0 0 1 0.5236003061004253
       children [
-        DEF SENSOR Transform {
+        DEF SENSOR Pose {
           rotation 0 1 0 1.5708
           children [
             Shape {
@@ -199,7 +196,8 @@ Robot {
       aperture 1
     }
   ]
-  boundingObject Transform {
+  name "rover"
+  boundingObject Pose {
     translation 0 0 0.0415
     children [
       USE BODY
@@ -208,5 +206,16 @@ Robot {
   physics Physics {
   }
   controller "<extern>"
-  name "rover"
+}
+PlasticCrate {
+  translation 1.18 -4.59 0
+  size 0.9 0.7 0.2
+  color 0.3 0.3 0.2
+}
+Can {
+  translation 1.53 -4.84 0.06
+}
+HandSanitizer {
+  translation 1.08804 -4.81 0.0312533
+  rotation 0.3853919091257548 0.732068827380387 -0.5617368675441475 -2.0499353071795863
 }
