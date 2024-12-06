@@ -34,7 +34,7 @@ class PandaSort(Node):
         colour_value = msg.data
         if colour_value in ('blue', 'green', 'cyan'):
             self.colour = colour_value
-            self.get_logger().info(f"{self.colour} block detected!")
+            #self.get_logger().info(f"{self.colour} block detected!")
         else:
             self.colour = None
 
@@ -72,7 +72,7 @@ class PandaSort(Node):
             self.move_joint('stand')
             time.sleep(0.5)
             self.move_joint('turn_back')
-            time.sleep(1.0) #stops the function from continuing until robot is completely back in position
+            time.sleep(1.3) #stops the function from continuing until robot is completely back in position
             self.is_moving_block = False #returned to position
         else:
             pass

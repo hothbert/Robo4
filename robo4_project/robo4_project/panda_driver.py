@@ -100,35 +100,52 @@ class PandaRobotDriver(WebotsController):
         cargo = []
 
         if msg.data == "green":
-            # Sorts the array with MergeSort, to get highest priority items
-            self.green_sorted.queue = self.green_sorted.merge_sort(self.green_sorted.queue)
-            # Transfers first three items from each colours queue to the cargo array.
-            box = self.green_sorted.pop()
-            cargo.append(box)
-            self.node.get_logger().info("Green box transferred to rover.")
+            if len(self.green_sorted.queue) == 0:
+                cargo.append((0, 0))
+            else:
+                # Sorts the array with MergeSort, to get highest priority items
+                self.green_sorted.queue = self.green_sorted.merge_sort(self.green_sorted.queue)
+                # Transfers first three items from each colours queue to the cargo array.
+                box = self.green_sorted.pop()
+                cargo.append(box)
+                self.node.get_logger().info("Green box transferred to rover.")
 
         if msg.data == "blue":
-            self.blue_sorted.queue = self.blue_sorted.merge_sort(self.blue_sorted.queue)
-            box = self.blue_sorted.pop()
-            cargo.append(box)
-            self.node.get_logger().info("Blue box transferred to rover.")
+            if len(self.blue_sorted.queue) == 0:
+                cargo.append((0, 0))
+            else:    
+                self.blue_sorted.queue = self.blue_sorted.merge_sort(self.blue_sorted.queue)
+                box = self.blue_sorted.pop()
+                cargo.append(box)
+                self.node.get_logger().info("Blue box transferred to rover.")
 
         if msg.data == "cyan":
-            self.cyan_sorted.queue = self.cyan_sorted.merge_sort(self.cyan_sorted.queue)
-            box = self.cyan_sorted.pop()
-            cargo.append(box)
-            self.node.get_logger().info("Cyan box transferred to rover.")
+            if len(self.cyan_sorted.queue) == 0:
+                cargo.append((0, 0))
+            else:
+                self.cyan_sorted.queue = self.cyan_sorted.merge_sort(self.cyan_sorted.queue)
+                box = self.cyan_sorted.pop()
+                cargo.append(box)
+                self.node.get_logger().info("Cyan box transferred to rover.")
 
-        self.node.get_logger().info(f"Cargo Q: {str(cargo)}")
-        self.send_cargo(cargo)
+        if cargo[0][0] == 0:
+            self.node.get_logger().info(f"No cargo to return.")
+            self.send_cargo(cargo)
+        else:
+            self.node.get_logger().info(f"Cargo Q: {str(cargo)}")
+            self.send_cargo(cargo)
 
     def send_cargo(self, cargo):
         msg = Int32MultiArray()
         msg.data = []
 
-        for box in cargo:
-            priority = box[0]
-            box_name = box[1]
+        priority = cargo[0][0]
+        box_name = cargo[0][1]
+
+        if priority == 0:
+            msg.data.append(priority)
+            msg.data.append(box_name)
+        else:
             box_num = self.get_box_number(box_name)
             
             msg.data.append(priority)
@@ -145,7 +162,7 @@ class PandaRobotDriver(WebotsController):
             return 0
 
     def spawn_box(self):
-        num = 1 # random.randint(1,3)
+        num = random.randint(1,3)
         colour = ""
 
         if num == 1:

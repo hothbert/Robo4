@@ -29,7 +29,6 @@ setup(
             'panda_sort = robo4_project.panda_sort:main',
             'sorted_box_queue = robo4_project.sorted_box_queue:main',
             'rover_driver = robo4_project.rover_driver:main',
-            'rover_move = robo4_project.rover_move:main',
             'linked_list = robo4_project.linked_list:main',
         ],
     },
