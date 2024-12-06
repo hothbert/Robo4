@@ -6,7 +6,7 @@ Our Project uses Webots with Ros2, so make sure you have both of these installed
 <br>You will also need the webots_ros2_driver package:
 * `sudo apt-get install ros-jazzy-webots-ros2`
 
-A full tutorial for installing webots is available [here](https://docs.ros.org/en/jazzy/Tutorials/Advanced/Simulators/Webots/Installation-Ubuntu.html)
+A full tutorial for installing webots with Ros2 Jazzy Jalisco is available [here](https://docs.ros.org/en/jazzy/Tutorials/Advanced/Simulators/Webots/Installation-Ubuntu.html)
 
 To run the project, simply open terminal and navigate to the directory Robo4/robo4_project.
 
