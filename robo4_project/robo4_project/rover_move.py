@@ -11,10 +11,10 @@ class RoverMove(Node):
     def __init__(self):
         super().__init__('rover_move')
         self.get_logger().info("Rover move init.")
-        self.movement = self.create_publisher(Twist, 'cmd_vel', 10)
-        
-        self.create_subscription(Pose, 'pose', self.pose_callback, 10)
-        self.rover = None
+       
+        #self.movement = self.create_publisher(Twist, 'cmd_vel', 10)
+        #self.create_subscription(Pose, 'pose', self.pose_callback, 10)
+        #self.rover = None
         
         # Circular LinkedList to cycle through each colour
         self.colour_linkedlist = CircularLinkedList()
