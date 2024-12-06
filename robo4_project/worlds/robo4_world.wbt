@@ -11,12 +11,16 @@ EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/project
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/factory/containers/protos/PlasticCrate.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/drinks/protos/Can.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/hospital/protos/HandSanitizer.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/factory/pipes/protos/LJoint.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/fruits/protos/Orange.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/factory/forklift/protos/Forklift.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/factory/fire_extinguisher/protos/FireExtinguisher.proto"
 
 WorldInfo {
 }
 Viewpoint {
-  orientation 0.2568680647347511 0.34516222048315226 -0.9027080584943082 1.3790478438398288
-  position -3.398869757865368 11.275649408143456 6.963745262950383
+  orientation 0.04721968191886314 0.018118376216566805 -0.9987201940897942 2.4105517193408406
+  position 6.737057987029856 4.709658031930677 1.6001915847153656
 }
 TexturedBackground {
 }
@@ -24,7 +28,16 @@ TexturedBackgroundLight {
 }
 Floor {
   appearance Parquetry {
+    type "light strip"
+    colorOverride 0.141176 0 0.211765
   }
+}
+FireExtinguisher {
+  translation 2.04 -4.5 0
+}
+LJoint {
+  translation -4.01 0 1.18
+  scale 6 6 6
 }
 PlasticCrate {
   translation 1.95 -0.77 0
@@ -75,7 +88,8 @@ Panda {
   ]
 }
 Robot {
-  translation -1 -4.3 0
+  translation 1.36 -2.4 0
+  rotation 0 0 1 0.785398
   children [
     HingeJoint {
       jointParameters HingeJointParameters {
@@ -181,8 +195,8 @@ Robot {
       aperture 1
     }
     DistanceSensor {
-      name "gps"
       translation 0 0 0.05
+      name "gps"
     }
   ]
   name "rover"
@@ -207,4 +221,10 @@ Can {
 HandSanitizer {
   translation 1.08804 -4.81 0.0312533
   rotation 0.3853919091257548 0.732068827380387 -0.5617368675441475 -2.0499353071795863
+}
+Orange {
+  translation 0.94 -4.57 0.05
+}
+Forklift {
+  translation -3.7 -3.96 0.81
 }
