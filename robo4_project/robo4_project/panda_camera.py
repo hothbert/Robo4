@@ -9,11 +9,11 @@ class PandaCamera(Node):
     def __init__(self):
         super().__init__('panda_camera')
         self.bridge = CvBridge()
-        self.create_subscription(Image, 'Panda/camera/image_color', self.camera_callback, 10)
+        self.create_subscription(Image, 'Panda/camera/image_color', self.camera_callback, 10) # subscribes to the webots sensor
         self.detected_colour_msg = None
 
         timer_period = 0.25
-        self.publisher = self.create_publisher(String, '/colour_msg', 10)
+        self.publisher = self.create_publisher(String, '/colour_msg', 10) # publishes the detected colour
         self.create_timer(timer_period, self.publish_colour)
         
 
@@ -24,7 +24,7 @@ class PandaCamera(Node):
         self.detect_colours(frame)
 
     def detect_colours(self, frame):
-        colours = {
+        colours = {  # has to be in BGR order
             (255, 0, 0): 'blue', #these are all the possible colours of our boxes
             (0, 255, 0): 'green',
             (255, 255, 0): 'cyan'

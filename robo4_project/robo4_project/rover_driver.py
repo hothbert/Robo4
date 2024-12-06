@@ -15,7 +15,7 @@ class RoverDriver(WebotsController):
         #self.gps = self.__robot.getDevice('gps')
         #self.gps.enable(1)
         
-        self.cargo = []
+        self.cargo = [] # items the rover is carying
         self.sleep = 0
         # Circular LinkedList to cycle through each colour
         self.colour_linkedlist = CircularLinkedList()
@@ -27,7 +27,7 @@ class RoverDriver(WebotsController):
         self.colour_node = self.colour_linkedlist.next(self.colour_node)
         self.colour = self.colour_node.data
 
-        rclpy.init(args=None)
+        rclpy.init(args=None) # allows access to ros2 features
         self.__node = rclpy.create_node('rover_driver')
         
         #self.pose_timer = self.__node.create_timer(0.5, self.publish_pose)
@@ -44,7 +44,7 @@ class RoverDriver(WebotsController):
         self.sleep = 1
         msg = String()
         msg.data = self.colour
-        self.cargo = []
+        self.cargo = [] # cargo is empty, trash was deposited
         self.__node.get_logger().info(f"Rover is travelling...")
         self.__node.get_logger().info(f"Rover arrived. ({self.colour})")
         self.arrived_publisher.publish(msg)
@@ -53,15 +53,15 @@ class RoverDriver(WebotsController):
         cargo_list = msg.data
 
         first_box = (cargo_list[0], self.num_to_name(cargo_list[1]))
-        self.cargo.append(first_box)
+        self.cargo.append(first_box) # recieve box from arm
         
-        if self.cargo[0][0] == 0:
+        if self.cargo[0][0] == 0: # this means the crate was empty
             self.__node.get_logger().info(f"Rover Cargo: None")
-        else:
+        else: # print the items the rover is holding
             self.__node.get_logger().info(f"Rover Cargo: {str(self.cargo)}")
         
-        self.colour_node = self.colour_linkedlist.next(self.colour_node)
-        self.colour = self.colour_node.data
+        self.colour_node = self.colour_linkedlist.next(self.colour_node) # get next destination
+        self.colour = self.colour_node.data # rover goes back to bins to deposit trash
         self.__node.get_logger().info(f"Rover is travelling...")
         self.__node.get_logger().info(f"Rover returned to base.")
 
@@ -92,5 +92,5 @@ class RoverDriver(WebotsController):
         #yaw = position[2]   
 
 
-    def step(self):
+    def step(self): # starts the node so that subscription works
         rclpy.spin_once(self.__node, timeout_sec=0)

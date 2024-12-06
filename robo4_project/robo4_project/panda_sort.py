@@ -47,17 +47,17 @@ class PandaSort(Node):
         distance = msg.range
         #self.get_logger().info(f"detected distance: {distance}")
 
-        if distance < 0.5:
+        if distance < 0.5: # means that something is on the conveyor belt
             self.is_moving_block = True
             block_colour = self.colour
 
             self.gripper('open')
-            self.move_joint('grab')
+            self.move_joint('grab') # bend down to the conveyer belt
             time.sleep(0.5) #sleeping makes sure actions are done sequentially, and the block isnt thrown
             self.gripper('close')
             time.sleep(0.5)
 
-            if block_colour is not None:
+            if block_colour is not None: # turn in the direction of the appropriate crate
                 if block_colour == 'blue':
                     self.move_joint('turn_blue')
                 elif block_colour == 'cyan':
@@ -66,10 +66,10 @@ class PandaSort(Node):
                     self.move_joint('turn_green')
             
             time.sleep(1.8)
-            self.gripper('open')   #this drops the block, we might want a container for them to go into
-            time.sleep(0.5)        #because currently they bounce, and it would look nicer too.
+            self.gripper('open')   # this drops the block
+            time.sleep(0.5)        
             self.gripper('close')
-            self.move_joint('stand')
+            self.move_joint('stand') # returns to original position
             time.sleep(0.5)
             self.move_joint('turn_back')
             time.sleep(1.3) #stops the function from continuing until robot is completely back in position

@@ -8,9 +8,6 @@ import random
 import re
 
 #this serves as an interface between ros2 nodes and the webots robot
-#its soul purpose is to send positions to each joint
-#it subscribes to robot movement commands and acts upon them
-#lets not put any logic here, save that for the actual ros2 nodes
 
 class PandaRobotDriver(WebotsController):
     def init(self, webots_node, properties):
@@ -19,7 +16,7 @@ class PandaRobotDriver(WebotsController):
         self.node = Node('panda_driver')
         self.__robot=webots_node.robot
         
-        self.supervisor=Supervisor()
+        self.supervisor=Supervisor() # gives permision to spawn items
 
         # Counters for boxes
         self.green_count = 0
@@ -36,6 +33,7 @@ class PandaRobotDriver(WebotsController):
         self.cyan_sorted = Queue()
         self.blue_sorted = Queue()
 
+        #initialiise joints we need for movement
         self.gripper_left = self.__robot.getDevice('panda_finger::left')
         self.gripper_right = self.__robot.getDevice('panda_finger::right')
         self.joint_4 = self.__robot.getDevice('panda_joint4')
@@ -43,26 +41,27 @@ class PandaRobotDriver(WebotsController):
         self.joint_2 = self.__robot.getDevice('panda_joint2')
         self.joint_1 = self.__robot.getDevice('panda_joint1')
 
+        # get actuator commands
         self.node.create_subscription(String, '/gripper_command', self.gripper_command_callback, 10)
         self.node.create_subscription(String, '/move_command', self.grab_callback, 10)
 
+        # get wether the rover has arrived at a crate or not
         self.node.create_subscription(String, '/arrived', self.transfer_cargo, 10)
         self.cargo_publisher = self.node.create_publisher(Int32MultiArray, '/cargo', 10)
 
-        self.timer = self.node.create_timer(10.0, self.spawn_box)
+        # this should simulate trash coming down a chute.
+        self.timer = self.node.create_timer(10.0, self.spawn_box) 
 
     def gripper_command_callback(self, msg):
         command = msg.data
         if command == "open":
             self.gripper_left.setPosition(0.04)  
-            self.gripper_right.setPosition(0.04)
-            self.node.get_logger().info("Gripper opened.")           
+            self.gripper_right.setPosition(0.04)     
         elif command == "close":
             self.gripper_left.setPosition(0.0)  
             self.gripper_right.setPosition(0.0)
-            self.node.get_logger().info("Gripper closed.")
 
-    #needs tidying up
+    # assigns joint positions based on commands recieved on topic
     def grab_callback(self, msg):
         command = msg.data
         if command =="grab": #don't touch unless robot isnt picking up properly!
@@ -72,8 +71,8 @@ class PandaRobotDriver(WebotsController):
         elif command =="stand":
             self.joint_4.setPosition(-1.77)
             self.joint_6.setPosition(1.6)
-        elif command == "turn_blue":        # might want to play with these to get it to drop the block
-            self.joint_1.setPosition(-2.0)  # gently, without coliding with other blocks on the conveyer belt
+        elif command == "turn_blue":      
+            self.joint_1.setPosition(-2.0)  
             self.joint_2.setPosition(0)
             blueBox = self.blue_array.pop(0)
             self.blue_sorted.add(blueBox)
@@ -96,10 +95,11 @@ class PandaRobotDriver(WebotsController):
         elif command == "turn_back":
             self.joint_1.setPosition(0)
 
+    # move the cargo onto the rover
     def transfer_cargo(self, msg):
         cargo = []
 
-        if msg.data == "green":
+        if msg.data == "green": # if the crate is empty, add "empty" value
             if len(self.green_sorted.queue) == 0:
                 cargo.append((0, 0))
             else:
@@ -110,7 +110,7 @@ class PandaRobotDriver(WebotsController):
                 cargo.append(box)
                 self.node.get_logger().info("Green box transferred to rover.")
 
-        if msg.data == "blue":
+        if msg.data == "blue": # as above
             if len(self.blue_sorted.queue) == 0:
                 cargo.append((0, 0))
             else:    
@@ -131,10 +131,11 @@ class PandaRobotDriver(WebotsController):
         if cargo[0][0] == 0:
             self.node.get_logger().info(f"No cargo to return.")
             self.send_cargo(cargo)
-        else:
+        else: # waht is being transported
             self.node.get_logger().info(f"Cargo Q: {str(cargo)}")
-            self.send_cargo(cargo)
+            self.send_cargo(cargo) 
 
+    # move the cargo from crate to rover
     def send_cargo(self, cargo):
         msg = Int32MultiArray()
         msg.data = []
@@ -151,7 +152,7 @@ class PandaRobotDriver(WebotsController):
             msg.data.append(priority)
             msg.data.append(box_num)
 
-        self.cargo_publisher.publish(msg)
+        self.cargo_publisher.publish(msg) # tells the rover what item it has
 
     # Function that returns the number of the box e.g. greenBox(5) returns 5. This is to make it easy to publish a list of [priority, box_num, priority, box_num, ...]
     def get_box_number(self, box_name: str) -> int:
@@ -161,6 +162,10 @@ class PandaRobotDriver(WebotsController):
         else:
             return 0
 
+
+
+    # this spawns the boxes at intervals
+    # has to be here becuase this robot is supervisor, but it is not relavant to Panda's knowledge base
     def spawn_box(self):
         num = random.randint(1,3)
         colour = ""

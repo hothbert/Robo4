@@ -19,8 +19,8 @@ EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/project
 WorldInfo {
 }
 Viewpoint {
-  orientation 0.04721968191886314 0.018118376216566805 -0.9987201940897942 2.4105517193408406
-  position 6.737057987029856 4.709658031930677 1.6001915847153656
+  orientation 0.2882470132797956 0.10657321429427674 -0.9516069615814416 2.4651140020970246
+  position 6.1020557360494925 4.093656479596945 5.231538999707302
 }
 TexturedBackground {
 }
@@ -103,6 +103,7 @@ Robot {
       ]
       endPoint Solid {
         translation 0 0.045 0.025
+        rotation 0 1 0 0
         children [
           DEF WHEEL Pose {
             rotation 1 0 0 1.5707996938995747
@@ -139,6 +140,7 @@ Robot {
       ]
       endPoint Solid {
         translation 0 -0.045 0.025
+        rotation 0 1 0 0
         children [
           USE WHEEL
         ]
@@ -227,4 +229,5 @@ Orange {
 }
 Forklift {
   translation -3.7 -3.96 0.81
+  enablePhysics FALSE
 }

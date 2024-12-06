@@ -41,7 +41,7 @@ class RoverMove(Node):
         x, y = None, None
         at_crate = False
 
-        if self.at_bin(): # rover wants to move from bin to one of the cr
+        if self.at_bin(): # rover wants to move from bin to one of the crate
             if self.colour == "green": # rover wants to go to green crate
                 x, y = 0.78, -1.29
             if self.colour == "blue":
@@ -53,16 +53,16 @@ class RoverMove(Node):
             x, y = 1.16, -4.08
             self.get_logger().info("Rover x: {x} y: {y}")
 
-        yaw =(
+        yaw =( # geometry messages angular pose is more complicated than turtlesim pose
             self.rover.orientation.x,
             self.rover.orientation.y,
             self.rover.orientation.z,
             self.rover.orientation.w
-        )
+        ) # needs tf2 to get single angle value
         theta = euler_from_quaternion(yaw)[2]
              
         distance = self.calculate_distance(x, y)
-        angtogoal = self.angle_to_goal(x, y) - theta
+        angtogoal = self.angle_to_goal(x, y) - theta # angle from rover to goal destination
         self.make_move(0.0, angtogoal) # rover turns to face the goal
         self.make_move(distance, 0.0) # rover moves to goal
         
