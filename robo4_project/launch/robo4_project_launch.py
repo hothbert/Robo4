@@ -46,6 +46,11 @@ def generate_launch_description():
         executable='panda_sort'
     )
 
+    rover_move = Node(
+        package='robo4_project',
+        executable='rover_move'
+    )
+
     return LaunchDescription([
         webots,
         panda_driver,
@@ -53,6 +58,7 @@ def generate_launch_description():
         panda_sensor,
         panda_camera,
         panda_sort,
+        rover_move,
         launch.actions.RegisterEventHandler(
             event_handler=launch.event_handlers.OnProcessExit(
                 target_action=webots,

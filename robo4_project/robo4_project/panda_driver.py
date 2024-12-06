@@ -36,8 +36,6 @@ class PandaRobotDriver(WebotsController):
         self.cyan_sorted = Queue()
         self.blue_sorted = Queue()
 
-        # self.blue_sorted.merge_sort - how to call the sort on an array
-
         self.gripper_left = self.__robot.getDevice('panda_finger::left')
         self.gripper_right = self.__robot.getDevice('panda_finger::right')
         self.joint_4 = self.__robot.getDevice('panda_joint4')
@@ -103,46 +101,51 @@ class PandaRobotDriver(WebotsController):
 
         if msg.data == "green":
             # Sorts the array with MergeSort, to get highest priority items
-            self.green_sorted.merge_sort
+            self.green_sorted.queue = self.green_sorted.merge_sort(self.green_sorted.queue)
             # Transfers first three items from each colours queue to the cargo array.
-            cargo.append(self.green_sorted.pop)
-            #cargo.append(self.green_sorted.pop)
-            #cargo.append(self.green_sorted.pop)
+            box = self.green_sorted.pop()
+            cargo.append(box)
             self.node.get_logger().info("Green box transferred to rover.")
 
         if msg.data == "blue":
-            self.blue_sorted.merge_sort
-            cargo.append(self.blue_sorted.pop)
-            #cargo.append(self.blue_sorted.pop)
-            #cargo.append(self.blue_sorted.pop)
-            self.node.get_logger().info("Cyan box transferred to rover.")
+            self.blue_sorted.queue = self.blue_sorted.merge_sort(self.blue_sorted.queue)
+            box = self.blue_sorted.pop()
+            cargo.append(box)
+            self.node.get_logger().info("Blue box transferred to rover.")
 
         if msg.data == "cyan":
-            self.cyan_sorted.merge_sort
-            cargo.append(self.cyan_sorted.pop)
-            #cargo.append(self.cyan_sorted.pop)
-            #cargo.append(self.cyan_sorted.pop)
+            self.cyan_sorted.queue = self.cyan_sorted.merge_sort(self.cyan_sorted.queue)
+            box = self.cyan_sorted.pop()
+            cargo.append(box)
             self.node.get_logger().info("Cyan box transferred to rover.")
-        self.send(cargo)
+
+        self.node.get_logger().info(f"Cargo Q: {str(cargo)}")
+        self.send_cargo(cargo)
 
     def send_cargo(self, cargo):
         msg = Int32MultiArray()
         msg.data = []
 
         for box in cargo:
-            msg.data.append(box[0])
-            box_num = self.get_box_number(box[1])
+            priority = box[0]
+            box_name = box[1]
+            box_num = self.get_box_number(box_name)
+            
+            msg.data.append(priority)
             msg.data.append(box_num)
 
-        self.cargo_publisher(msg)
+        self.cargo_publisher.publish(msg)
 
     # Function that returns the number of the box e.g. greenBox(5) returns 5. This is to make it easy to publish a list of [priority, box_num, priority, box_num, ...]
-    def get_box_number(box_name: str) -> int:
+    def get_box_number(self, box_name: str) -> int:
         match = re.search(r'\((\d+)\)', box_name)
-        return int(match.group(1))
+        if match:
+            return int(match.group(1))
+        else:
+            return 0
 
     def spawn_box(self):
-        num = random.randint(1,3)
+        num = 1 # random.randint(1,3)
         colour = ""
 
         if num == 1:
